@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌟 NEON FREELANCE - Демо</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            background: #0a0a0a;
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+        
+        /* Background Animation */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: 
+                radial-gradient(circle at 20% 20%, rgba(0, 255, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(255, 0, 255, 0.1) 0%, transparent 50%);
+            animation: pulse 8s ease-in-out infinite;
+            z-index: -1;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 0.8; }
+        }
+        
+        /* Header */
+        .header {
+            background: rgba(10, 10, 10, 0.9);
+            backdrop-filter: blur(20px);
+            border-bottom: 2px solid #00ffff;
+            padding: 20px 0;
+            box-shadow: 0 0 30px rgba(0, 255, 255, 0.3);
+        }
+        
+        .nav-brand {
+            text-align: center;
+            font-size: 2rem;
+            font-weight: 700;
+            color: #00ffff;
+            text-shadow: 0 0 20px #00ffff;
+        }
+        
+        /* Hero */
+        .hero {
+            padding: 80px 20px;
+            text-align: center;
+        }
+        
+        .hero-title {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            background: linear-gradient(45deg, #00ffff, #ff00ff, #8000ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: glow 3s ease-in-out infinite;
+        }
+        
+        @keyframes glow {
+            0%, 100% { filter: brightness(1); }
+            50% { filter: brightness(1.5); }
+        }
+        
+        .hero-description {
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+            color: #cccccc;
+        }
+        
+        /* Buttons */
+        .btn {
+            padding: 15px 30px;
+            border: 2px solid #00ffff;
+            background: rgba(0, 255, 255, 0.1);
+            color: #00ffff;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 1rem;
+            margin: 10px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .btn:hover {
+            background: rgba(0, 255, 255, 0.2);
+            box-shadow: 0 0 30px rgba(0, 255, 255, 0.5);
+            transform: translateY(-2px);
+        }
+        
+        .btn-primary {
+            background: linear-gradient(45deg, #00ffff, #0080ff);
+            color: #000;
+            animation: pulse-btn 2s ease-in-out infinite;
+        }
+        
+        @keyframes pulse-btn {
+            0%, 100% { box-shadow: 0 0 20px rgba(0, 255, 255, 0.3); }
+            50% { box-shadow: 0 0 40px rgba(0, 255, 255, 0.6); }
+        }
+        
+        /* Orders */
+        .orders {
+            padding: 60px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+            color: #00ffff;
+            text-shadow: 0 0 20px #00ffff;
+        }
+        
+        .orders-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+        
+        .order-card {
+            background: rgba(20, 20, 20, 0.8);
+            border: 2px solid #00ffff;
+            border-radius: 15px;
+            padding: 25px;
+            backdrop-filter: blur(10px);
+            transition: all 0.4s ease;
+            cursor: pointer;
+        }
+        
+        .order-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 0 30px rgba(0, 255, 255, 0.4);
+            border-color: #ff00ff;
+        }
+        
+        .order-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+        }
+        
+        .order-category {
+            background: rgba(0, 255, 255, 0.2);
+            color: #00ffff;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+        
+        .urgent-badge {
+            background: rgba(255, 7, 58, 0.2);
+            color: #ff073a;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            animation: urgent-pulse 2s ease-in-out infinite;
+        }
+        
+        @keyframes urgent-pulse {
+            0%, 100% { box-shadow: 0 0 10px rgba(255, 7, 58, 0.3); }
+            50% { box-shadow: 0 0 20px rgba(255, 7, 58, 0.6); }
+        }
+        
+        .order-title {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: #00ffff;
+            text-shadow: 0 0 10px #00ffff;
+        }
+        
+        .order-description {
+            color: #cccccc;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+        
+        .order-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .order-price {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #00ffff;
+            text-shadow: 0 0 10px #00ffff;
+        }
+        
+        .order-actions {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .btn-sm {
+            padding: 8px 15px;
+            font-size: 0.9rem;
+        }
+        
+        /* Stats */
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin: 60px 0;
+            flex-wrap: wrap;
+        }
+        
+        .stat {
+            text-align: center;
+            padding: 20px;
+            background: rgba(20, 20, 20, 0.8);
+            border: 2px solid #00ffff;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #00ffff;
+            text-shadow: 0 0 20px #00ffff;
+        }
+        
+        .stat-label {
+            color: #cccccc;
+            margin-top: 5px;
+        }
+        
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .modal.active { display: flex; }
+        
+        .modal-content {
+            background: rgba(20, 20, 20, 0.9);
+            border: 2px solid #00ffff;
+            border-radius: 15px;
+            padding: 30px;
+            max-width: 500px;
+            width: 90%;
+            animation: modalGlow 0.5s ease;
+        }
+        
+        @keyframes modalGlow {
+            0% { box-shadow: 0 0 0 rgba(0, 255, 255, 0); }
+            50% { box-shadow: 0 0 30px rgba(0, 255, 255, 0.5); }
+            100% { box-shadow: 0 0 15px rgba(0, 255, 255, 0.3); }
+        }
+        
+        .close {
+            float: right;
+            font-size: 2rem;
+            cursor: pointer;
+            color: #ff073a;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #00ffff;
+        }
+        
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid #00ffff;
+            border-radius: 8px;
+            color: #fff;
+        }
+        
+        .form-group input:focus, .form-group textarea:focus {
+            outline: none;
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-title { font-size: 2rem; }
+            .orders-grid { grid-template-columns: 1fr; }
+            .stats { flex-direction: column; align-items: center; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="nav-brand">
+            <i class="fas fa-rocket"></i> NEON FREELANCE
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero">
+        <h1 class="hero-title">Найдите идеального исполнителя в неоне</h1>
+        <p class="hero-description">🚀 Самая продвинутая фриланс-платформа с неоновым дизайном и ИИ-подбором!</p>
+        <a href="#orders" class="btn btn-primary">
+            <i class="fas fa-rocket"></i> Смотреть заказы
+        </a>
+        <button class="btn" onclick="showModal('registerModal')">
+            <i class="fas fa-user-plus"></i> Регистрация
+        </button>
+    </section>
+
+    <!-- Stats -->
+    <div class="stats">
+        <div class="stat">
+            <div class="stat-number">50K+</div>
+            <div class="stat-label">Исполнителей</div>
+        </div>
+        <div class="stat">
+            <div class="stat-number">100K+</div>
+            <div class="stat-label">Проектов</div>
+        </div>
+        <div class="stat">
+            <div class="stat-number">$5M+</div>
+            <div class="stat-label">Выплачено</div>
+        </div>
+        <div class="stat">
+            <div class="stat-number">4.9</div>
+            <div class="stat-label">Рейтинг</div>
+        </div>
+    </div>
+
+    <!-- Orders -->
+    <section id="orders" class="orders">
+        <h2 class="section-title">🔥 Активные заказы</h2>
+        <div class="orders-grid">
+            <div class="order-card" onclick="showModal('bidModal')">
+                <div class="order-header">
+                    <div class="order-category">
+                        <i class="fas fa-code"></i> Программирование
+                    </div>
+                    <div class="urgent-badge">🔥 СРОЧНО</div>
+                </div>
+                <h3 class="order-title">Разработка современного сайта с ИИ</h3>
+                <p class="order-description">Нужен крутой сайт с интеграцией ChatGPT API, неоновым дизайном и адаптивной версткой. Должен работать быстро и выглядеть как из будущего!</p>
+                <div class="order-footer">
+                    <div class="order-price">$2,500</div>
+                    <div class="order-actions">
+                        <button class="btn btn-sm" onclick="event.stopPropagation(); showModal('bidModal')">
+                            <i class="fas fa-paper-plane"></i> Откликнуться
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="order-card" onclick="showModal('bidModal')">
+                <div class="order-header">
+                    <div class="order-category">
+                        <i class="fas fa-palette"></i> Дизайн
+                    </div>
+                </div>
+                <h3 class="order-title">Дизайн логотипа для криптопроекта</h3>
+                <p class="order-description">Создать неоновый логотип для DeFi платформы. Стиль - кибerpанк, должен светиться и быть запоминающимся.</p>
+                <div class="order-footer">
+                    <div class="order-price">$800</div>
+                    <div class="order-actions">
+                        <button class="btn btn-sm" onclick="event.stopPropagation(); showModal('bidModal')">
+                            <i class="fas fa-paper-plane"></i> Откликнуться
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="order-card" onclick="showModal('bidModal')">
+                <div class="order-header">
+                    <div class="order-category">
+                        <i class="fas fa-bullhorn"></i> Маркетинг
+                    </div>
+                    <div class="urgent-badge">🔥 СРОЧНО</div>
+                </div>
+                <h3 class="order-title">SMM для NFT коллекции</h3>
+                <p class="order-description">Продвижение NFT коллекции в Twitter, Discord, Instagram. Нужен опыт в крипто-маркетинге и понимание Web3.</p>
+                <div class="order-footer">
+                    <div class="order-price">$1,200</div>
+                    <div class="order-actions">
+                        <button class="btn btn-sm" onclick="event.stopPropagation(); showModal('bidModal')">
+                            <i class="fas fa-paper-plane"></i> Откликнуться
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="order-card" onclick="showModal('bidModal')">
+                <div class="order-header">
+                    <div class="order-category">
+                        <i class="fas fa-mobile-alt"></i> Мобильные приложения
+                    </div>
+                </div>
+                <h3 class="order-title">Мобильное приложение для фитнеса</h3>
+                <p class="order-description">React Native приложение с трекингом тренировок, ИИ-советчиком и социальными функциями.</p>
+                <div class="order-footer">
+                    <div class="order-price">$5,000</div>
+                    <div class="order-actions">
+                        <button class="btn btn-sm" onclick="event.stopPropagation(); showModal('bidModal')">
+                            <i class="fas fa-paper-plane"></i> Откликнуться
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modals -->
+    <div id="registerModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('registerModal')">&times;</span>
+            <h2 style="color: #00ffff; margin-bottom: 20px;">🚀 Регистрация</h2>
+            <form onsubmit="handleRegister(event)">
+                <div class="form-group">
+                    <label>👤 Имя</label>
+                    <input type="text" required>
+                </div>
+                <div class="form-group">
+                    <label>📧 Email</label>
+                    <input type="email" required>
+                </div>
+                <div class="form-group">
+                    <label>🔑 Пароль</label>
+                    <input type="password" required>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%;">
+                    <i class="fas fa-user-plus"></i> Зарегистрироваться
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <div id="bidModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('bidModal')">&times;</span>
+            <h2 style="color: #00ffff; margin-bottom: 20px;">📝 Откликнуться на проект</h2>
+            <form onsubmit="handleBid(event)">
+                <div class="form-group">
+                    <label>💰 Ваша цена (USD)</label>
+                    <input type="number" min="1" required>
+                </div>
+                <div class="form-group">
+                    <label>📝 Сопроводительное письмо</label>
+                    <textarea rows="4" required placeholder="Расскажите, почему именно вы подходите для этого проекта..."></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%;">
+                    <i class="fas fa-rocket"></i> Отправить отклик
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function showModal(modalId) {
+            document.getElementById(modalId).classList.add('active');
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).classList.remove('active');
+        }
+
+        function handleRegister(event) {
+            event.preventDefault();
+            showNotification('Регистрация успешна! Добро пожаловать! 🚀', 'success');
+            closeModal('registerModal');
+        }
+
+        function handleBid(event) {
+            event.preventDefault();
+            showNotification('Отклик успешно отправлен! 🎉', 'success');
+            closeModal('bidModal');
+        }
+
+        function showNotification(message, type) {
+            const notification = document.createElement('div');
+            notification.style.cssText = `
+                position: fixed; top: 20px; right: 20px; z-index: 2000;
+                padding: 15px 20px; border-radius: 10px; color: white;
+                background: rgba(0, 255, 0, 0.2); border: 2px solid #00ff00;
+                box-shadow: 0 0 20px rgba(0, 255, 0, 0.5);
+                animation: slideIn 0.5s ease;
+            `;
+            notification.textContent = message;
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.style.animation = 'slideOut 0.5s ease';
+                setTimeout(() => notification.remove(), 500);
+            }, 3000);
+        }
+
+        // Close modal on backdrop click
+        document.addEventListener('click', function(e) {
+            if (e.target.classList.contains('modal')) {
+                closeModal(e.target.id);
+            }
+        });
+
+        // Add CSS animations
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes slideIn {
+                from { transform: translateX(100%); opacity: 0; }
+                to { transform: translateX(0); opacity: 1; }
+            }
+            @keyframes slideOut {
+                from { transform: translateX(0); opacity: 1; }
+                to { transform: translateX(100%); opacity: 0; }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>
