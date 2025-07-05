@@ -45,38 +45,41 @@ async def start(update: Update, context):
         )
         
         welcome_text = f"""
-🎉 *Добро пожаловать в FreelanceBot!*
+� *Добро пожаловать в NEON FREELANCE!*
 
-Привет, {user.first_name or user.username}! 
+Привет, {user.first_name or user.username}! 🔥
 
-Я мощный фриланс-бот, который поможет вам:
+У нас есть крутое веб-приложение с неоновым дизайном и всеми функциями! 🌈
 
-🎯 *Заказчикам:*
-• Находить лучших исполнителей
-• Размещать заказы быстро и удобно
-• Управлять проектами
-• Безопасно проводить сделки
+🚀 *Веб-приложение включает:*
+• Современный неоновый интерфейс
+• Полный функционал фриланс-платформы
+• Плавные анимации и эффекты
+• Мобильная версия
+• Все возможности в одном месте
 
-💼 *Исполнителям:*
-• Находить интересные проекты
-• Откликаться на заказы
-• Строить репутацию
-• Получать стабильный доход
+� *Или используйте бота для:*
+• Быстрых уведомлений
+• Управления заказами
+• Чата с заказчиками/исполнителями
+• Мобильного доступа
 
-✨ *Уникальные возможности:*
-• Умный поиск и фильтры
-• Система рейтингов и отзывов
-• Встроенный чат для общения
-• Безопасные сделки
-• Поддержка файлов и портфолио
-
-Для начала выберите ваш тип аккаунта:
+👆 Нажмите кнопку ниже чтобы открыть веб-приложение!
         """
+        
+        # Создаем клавиатуру с веб-приложением
+        from telegram import InlineKeyboardButton, InlineKeyboardMarkup, WebAppInfo
+        
+        keyboard = [
+            [InlineKeyboardButton("🌟 Открыть Neon Freelance App", web_app=WebAppInfo("https://your-domain.com"))],
+            [InlineKeyboardButton("📱 Продолжить в боте", callback_data="continue_bot")]
+        ]
+        reply_markup = InlineKeyboardMarkup(keyboard)
         
         await update.message.reply_text(
             welcome_text,
             parse_mode=ParseMode.MARKDOWN,
-            reply_markup=user_type_keyboard()
+            reply_markup=reply_markup
         )
         
     finally:
@@ -473,8 +476,18 @@ async def handle_callback_query(update: Update, context):
     query = update.callback_query
     data = query.data
     
+    # Обработка продолжения в боте
+    if data == 'continue_bot':
+        await query.answer()
+        await query.edit_message_text(
+            "📱 *Добро пожаловать в бота!*\n\n"
+            "Выберите ваш тип аккаунта:",
+            parse_mode=ParseMode.MARKDOWN,
+            reply_markup=user_type_keyboard()
+        )
+    
     # Обработка выбора типа пользователя
-    if data.startswith('usertype_'):
+    elif data.startswith('usertype_'):
         await handle_user_type(update, context)
     
     # Обработка меню заказов
