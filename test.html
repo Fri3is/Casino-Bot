@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🔥 ТЕСТ НЕОНОВОГО ПРИЛОЖЕНИЯ</title>
+    <style>
+        body {
+            background: #0a0a0a;
+            color: #00ffff;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 50px;
+        }
+        .neon-text {
+            color: #00ffff;
+            text-shadow: 0 0 20px #00ffff;
+            font-size: 3rem;
+            margin-bottom: 30px;
+        }
+        .btn {
+            background: rgba(0, 255, 255, 0.2);
+            border: 2px solid #00ffff;
+            color: #00ffff;
+            padding: 15px 30px;
+            margin: 10px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 1.2rem;
+            text-shadow: 0 0 10px #00ffff;
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+        }
+        .btn:hover {
+            background: rgba(0, 255, 255, 0.4);
+            box-shadow: 0 0 30px rgba(0, 255, 255, 0.5);
+        }
+    </style>
+</head>
+<body>
+    <h1 class="neon-text">🌟 NEON FREELANCE РАБОТАЕТ!</h1>
+    <p>Если вы видите эту страницу - значит файлы загружаются правильно!</p>
+    
+    <div>
+        <button class="btn" onclick="window.location.href='index.html'">
+            🚀 Открыть основное приложение
+        </button>
+    </div>
+    
+    <div>
+        <button class="btn" onclick="testJS()">
+            ⚡ Тест JavaScript
+        </button>
+    </div>
+    
+    <div id="result"></div>
+    
+    <script>
+        function testJS() {
+            document.getElementById('result').innerHTML = '✅ JavaScript работает!';
+            console.log('🔥 Все работает!');
+        }
+    </script>
+</body>
+</html>
