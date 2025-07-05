@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FreelancePro - Лучшая фриланс платформа</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav">
+            <div class="nav-container">
+                <div class="nav-brand">
+                    <i class="fas fa-rocket"></i>
+                    <span>FreelancePro</span>
+                </div>
+                
+                <div class="nav-menu" id="nav-menu">
+                    <a href="#home" class="nav-link active">Главная</a>
+                    <a href="#orders" class="nav-link">Заказы</a>
+                    <a href="#freelancers" class="nav-link">Исполнители</a>
+                    <a href="#how-it-works" class="nav-link">Как работает</a>
+                    <a href="#pricing" class="nav-link">Тарифы</a>
+                </div>
+                
+                <div class="nav-actions">
+                    <button class="btn btn-outline" onclick="showLogin()">Войти</button>
+                    <button class="btn btn-primary" onclick="showRegister()">Регистрация</button>
+                    <div class="nav-toggle" id="nav-toggle">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <span class="hero-badge">🔥 РЕВОЛЮЦИЯ ВО ФРИЛАНСЕ</span>
+                    <h1 class="hero-title">
+                        Найдите <span class="gradient-text">идеального</span><br>
+                        исполнителя за <span class="gradient-text">минуты</span>
+                    </h1>
+                    <p class="hero-description">
+                        Самая продвинутая фриланс-платформа с ИИ-подбором, безопасными сделками 
+                        и гарантией результата. Более 50,000 профессионалов уже работают с нами.
+                    </p>
+                    <div class="hero-actions">
+                        <button class="btn btn-primary btn-large" onclick="showRegister()">
+                            <i class="fas fa-rocket"></i>
+                            Начать зарабатывать
+                        </button>
+                        <button class="btn btn-outline btn-large" onclick="scrollToSection('how-it-works')">
+                            <i class="fas fa-play"></i>
+                            Как это работает
+                        </button>
+                    </div>
+                    <div class="hero-stats">
+                        <div class="stat">
+                            <div class="stat-number">50K+</div>
+                            <div class="stat-label">Исполнителей</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number">100K+</div>
+                            <div class="stat-label">Проектов</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number">$5M+</div>
+                            <div class="stat-label">Выплачено</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number">4.9</div>
+                            <div class="stat-label">Рейтинг</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="hero-visual">
+                    <div class="hero-cards">
+                        <div class="floating-card card-1">
+                            <div class="card-avatar">
+                                <img src="https://images.unsplash.com/photo-1494790108755-2616b612b77c?w=40&h=40&fit=crop&crop=face" alt="Avatar">
+                            </div>
+                            <div class="card-content">
+                                <div class="card-name">Анна Иванова</div>
+                                <div class="card-role">UI/UX Дизайнер</div>
+                                <div class="card-rating">
+                                    <i class="fas fa-star"></i>
+                                    <span>4.9</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="floating-card card-2">
+                            <div class="card-icon">
+                                <i class="fas fa-code"></i>
+                            </div>
+                            <div class="card-content">
+                                <div class="card-title">Разработка сайта</div>
+                                <div class="card-price">от $500</div>
+                                <div class="card-time">3-5 дней</div>
+                            </div>
+                        </div>
+                        
+                        <div class="floating-card card-3">
+                            <div class="card-progress">
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 75%"></div>
+                                </div>
+                                <div class="progress-text">75% выполнено</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section class="categories">
+        <div class="container">
+            <h2 class="section-title">Популярные категории</h2>
+            <div class="categories-grid">
+                <div class="category-card" onclick="filterOrders('programming')">
+                    <div class="category-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <div class="category-name">Программирование</div>
+                    <div class="category-count">1,234 заказов</div>
+                </div>
+                
+                <div class="category-card" onclick="filterOrders('design')">
+                    <div class="category-icon">
+                        <i class="fas fa-palette"></i>
+                    </div>
+                    <div class="category-name">Дизайн</div>
+                    <div class="category-count">856 заказов</div>
+                </div>
+                
+                <div class="category-card" onclick="filterOrders('writing')">
+                    <div class="category-icon">
+                        <i class="fas fa-pen"></i>
+                    </div>
+                    <div class="category-name">Копирайтинг</div>
+                    <div class="category-count">642 заказов</div>
+                </div>
+                
+                <div class="category-card" onclick="filterOrders('marketing')">
+                    <div class="category-icon">
+                        <i class="fas fa-bullhorn"></i>
+                    </div>
+                    <div class="category-name">Маркетинг</div>
+                    <div class="category-count">489 заказов</div>
+                </div>
+                
+                <div class="category-card" onclick="filterOrders('video')">
+                    <div class="category-icon">
+                        <i class="fas fa-video"></i>
+                    </div>
+                    <div class="category-name">Видео</div>
+                    <div class="category-count">321 заказов</div>
+                </div>
+                
+                <div class="category-card" onclick="filterOrders('mobile')">
+                    <div class="category-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <div class="category-name">Мобильные приложения</div>
+                    <div class="category-count">267 заказов</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Orders Section -->
+    <section id="orders" class="orders-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Активные заказы</h2>
+                <div class="section-actions">
+                    <button class="btn btn-primary" onclick="showCreateOrder()">
+                        <i class="fas fa-plus"></i>
+                        Создать заказ
+                    </button>
+                </div>
+            </div>
+            
+            <div class="filters">
+                <div class="filter-group">
+                    <button class="filter-btn active" onclick="filterOrders('all')">Все</button>
+                    <button class="filter-btn" onclick="filterOrders('programming')">Программирование</button>
+                    <button class="filter-btn" onclick="filterOrders('design')">Дизайн</button>
+                    <button class="filter-btn" onclick="filterOrders('writing')">Копирайтинг</button>
+                    <button class="filter-btn" onclick="filterOrders('marketing')">Маркетинг</button>
+                </div>
+                <div class="search-box">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Поиск заказов..." onkeyup="searchOrders(this.value)">
+                </div>
+            </div>
+            
+            <div class="orders-grid" id="orders-grid">
+                <!-- Orders will be populated by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section id="how-it-works" class="how-it-works">
+        <div class="container">
+            <h2 class="section-title">Как это работает</h2>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3>Создайте заказ</h3>
+                        <p>Опишите задачу, укажите бюджет и сроки. Наша ИИ система автоматически подберет подходящих исполнителей.</p>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3>Выберите исполнителя</h3>
+                        <p>Получите отклики от проверенных специалистов. Изучите портфолио, отзывы и выберите лучшего.</p>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3>Получите результат</h3>
+                        <p>Работайте в безопасной среде с гарантией качества. Оплата происходит только после выполнения работы.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="nav-brand">
+                        <i class="fas fa-rocket"></i>
+                        <span>FreelancePro</span>
+                    </div>
+                    <p>Революционная фриланс-платформа нового поколения</p>
+                </div>
+                
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Для заказчиков</h4>
+                        <a href="#">Найти исполнителя</a>
+                        <a href="#">Создать заказ</a>
+                        <a href="#">Безопасная сделка</a>
+                    </div>
+                    
+                    <div class="footer-column">
+                        <h4>Для исполнителей</h4>
+                        <a href="#">Найти работу</a>
+                        <a href="#">Создать профиль</a>
+                        <a href="#">Повысить рейтинг</a>
+                    </div>
+                    
+                    <div class="footer-column">
+                        <h4>Поддержка</h4>
+                        <a href="#">Помощь</a>
+                        <a href="#">Контакты</a>
+                        <a href="#">Обратная связь</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 FreelancePro. Все права защищены.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-telegram"></i></a>
+                    <a href="#"><i class="fab fa-discord"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-github"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modals -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Вход в систему</h2>
+                <span class="close" onclick="closeModal('loginModal')">&times;</span>
+            </div>
+            <div class="modal-body">
+                <form id="loginForm">
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Пароль</label>
+                        <input type="password" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-full">Войти</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div id="registerModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Регистрация</h2>
+                <span class="close" onclick="closeModal('registerModal')">&times;</span>
+            </div>
+            <div class="modal-body">
+                <form id="registerForm">
+                    <div class="form-group">
+                        <label>Имя</label>
+                        <input type="text" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Пароль</label>
+                        <input type="password" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Тип аккаунта</label>
+                        <select required>
+                            <option value="">Выберите тип</option>
+                            <option value="client">Заказчик</option>
+                            <option value="freelancer">Исполнитель</option>
+                            <option value="both">Заказчик и исполнитель</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-full">Зарегистрироваться</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
